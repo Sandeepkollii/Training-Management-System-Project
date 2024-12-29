@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Training_Management_System.ViewModels.BatchViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>Index</h1>
+<link href=" c:\users\satya sai sandeep\source\repos\trainer projects\project_webapi\training_management_system\wwwroot\css\card.css" rel="stylesheet"   />
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<div class="card-container">
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-title"></div>
+            <div class="card-content">
+                <p><strong>Batch Name</strong>@Html.DisplayFor(modelItem => item.BatchName)</p>
+                <p><strong>Batch ID:</strong> @Html.DisplayFor(modelItem => item.BatchId)</p>
+                <p><strong>Start Date:</strong> @Html.DisplayFor(modelItem => item.StartDate)</p>
+                <p><strong>End Date:</strong> @Html.DisplayFor(modelItem => item.EndDate)</p>
+                <p><strong>Batch Count:</strong> @Html.DisplayFor(modelItem => item.BatchCount)</p>
+                <p><strong>Is Active:</strong> @Html.DisplayFor(modelItem => item.IsActive)</p>
+            </div>
+            <div class="card-actions">
+                @Html.ActionLink("Edit", "Edit", new { id = item.BatchId }, new { @class = "btn btn-primary" }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BatchId }, new { @class = "btn btn-secondary" }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BatchId }, new { @class = "btn btn-danger" }) |
+                @Html.ActionLink("Add Enrollment", "Enrollment", new { }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+    }
+</div>
